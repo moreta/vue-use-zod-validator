@@ -1,6 +1,6 @@
 {
   "name": "vue-use-zod-validator",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Simple Zod Form validator composable for Vue 3",
   "author": "moreta <moretajoo@gmail.com>",
   "license": "MIT",
