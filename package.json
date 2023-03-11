@@ -1,20 +1,32 @@
 {
-  "name": "vue-use-zod-validator",
+  "name": "@vue-use-zod-validator/monorepo",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+  "author": "moreta <moretajoo@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moreta/vue-use-zod-validator.git"
   },
-  "dependencies": {
-    "vue": "^3.2.45"
+  "scripts": {
+    "build:libs": "pnpm -C libs run build",
+    "build": "pnpm run -r build",
+    "dev:docs": "pnpm run build:libs && pnpm -C docs run dev",
+    "publish:libs": "pnpm run build:libs && pnpm -C libs run publish:libs --access public",
+    "publish:docs": "pnpm run build && pnpm --package=netlify-cli dlx netlify deploy --dir=./docs/dist --prod"
+  },
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=7"
   },
   "devDependencies": {
+    "@types/node": "^18.15.0",
     "@vitejs/plugin-vue": "^4.0.0",
     "typescript": "^4.9.3",
     "vite": "^4.1.0",
+    "vitest": "^0.29.2",
+    "vue": "^3.2.45",
     "vue-tsc": "^1.0.24"
   }
 }

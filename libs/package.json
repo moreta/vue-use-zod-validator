@@ -1,0 +1,38 @@
+{
+  "name": "vue-use-zod-validator",
+  "private": true,
+  "description": "Simple Zod Form validator composable for Vue 3",
+  "version": "0.0.1",
+  "author": "moreta <moretajoo@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "vuejs",
+    "vue3",
+    "zod",
+    "validator"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moreta/vue-use-zod-validate.git"
+  },
+  "type": "module",
+  "main": "./dist/use-zod-validator.umd.cjs",
+  "module": "./dist/use-zod-validator.js",
+  "types": "./types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/use-zod-validator.js",
+      "require": "./dist/use-zod-validator.umd.cjs"
+    }
+  },
+  "scripts": {
+    "build": "vue-tsc && vite build",
+    "publish:libs": "npm publish"
+  },
+  "dependencies": {
+    "@vueuse/core": "^9.13.0",
+    "vue": "^3.2.45",
+    "zod": "^3.21.4"
+  }
+}

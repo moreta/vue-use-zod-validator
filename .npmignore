@@ -1,0 +1,5 @@
+assets
+components
+index.ts
+!dist
+!types
