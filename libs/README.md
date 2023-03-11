@@ -1,6 +1,6 @@
 # vue-use-zod-validator
 
-Simple Zod Form validator composable for Vue 3
+Simple Zod Form validator composable for Vue Composition API
 
 * Working with plain html tag. You don't need to use custom components.
 
