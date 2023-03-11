@@ -2,7 +2,7 @@
 
 Simple Zod Form validator composable for Vue 3
 
-* Working with plain html tag. Don't need custom component.
+* Working with plain html tag. You don't need to use custom components.
 
 # Dependencies
 

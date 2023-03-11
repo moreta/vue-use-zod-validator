@@ -2,6 +2,8 @@
 
 Simple Zod Form validator composable for Vue 3
 
+* Working with plain html tag. You don't need to use custom components.
+
 # This Repository
 
 using pnpm workspace
