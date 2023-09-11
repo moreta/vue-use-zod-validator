@@ -3,12 +3,7 @@ import type { UnwrapRef } from 'vue'
 import { ref } from 'vue'
 import { watchDebounced } from '@vueuse/core'
 
-// type allKeys<T> = T extends any ? keyof T : never
-// type Errors<T> = {
-//   [P in allKeys<T>]?: { message: string, errorCode: string, path: (string | number)[] }[]
-// } | {}
-
-type Errors<T> = Record<keyof T, { message: string, errorCode: string, path: (string | number)[] }[]> | {}
+type Errors<T> = Record<keyof T, { message: string, errorCode: string, path: (string | number)[] }[]>
 
 type ValidationResult<T> = {
   values: UnwrapRef<T>
@@ -18,7 +13,7 @@ type ValidationResult<T> = {
 
 export const useZodValidator = <T>(schema: ZodTypeAny, initialValues: T) => {
   const values = ref<T>(initialValues)
-  const errors = ref<Errors<T>>({})
+  const errors = ref<Errors<T>>({} as Errors<T>)
   const isValid = ref<boolean>(true)
 
   const validate = async (): Promise<ValidationResult<T>> => {
@@ -26,16 +21,19 @@ export const useZodValidator = <T>(schema: ZodTypeAny, initialValues: T) => {
 
     if (result.success) {
       isValid.value = true
-      errors.value = {}
+      // @ts-ignore
+      errors.value = {} as Errors<T>
 
       return {
         values: values.value,
+        // @ts-ignore
         errors: {},
         isValid: true,
       }
     } else {
       isValid.value = false
 
+      // @ts-ignore
       errors.value = result.error.flatten((issue: ZodIssue) => ({
         message: issue.message,
         errorCode: issue.code,
@@ -44,6 +42,7 @@ export const useZodValidator = <T>(schema: ZodTypeAny, initialValues: T) => {
 
       return {
         values: values.value,
+        // @ts-ignore
         errors: errors.value,
         isValid: false,
       }
