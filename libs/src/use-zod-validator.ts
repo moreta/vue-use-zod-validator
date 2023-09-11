@@ -3,10 +3,12 @@ import type { UnwrapRef } from 'vue'
 import { ref } from 'vue'
 import { watchDebounced } from '@vueuse/core'
 
-type allKeys<T> = T extends any ? keyof T : never
-type Errors<T> = {
-  [P in allKeys<T>]?: { message: string, errorCode: string, path: (string | number)[] }[]
-} | {}
+// type allKeys<T> = T extends any ? keyof T : never
+// type Errors<T> = {
+//   [P in allKeys<T>]?: { message: string, errorCode: string, path: (string | number)[] }[]
+// } | {}
+
+type Errors<T> = Record<keyof T, { message: string, errorCode: string, path: (string | number)[] }[]> | {}
 
 type ValidationResult<T> = {
   values: UnwrapRef<T>
